@@ -3,36 +3,39 @@ from django.urls import reverse
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user
 from .models import Pglist,User,Customer
 # Create your views here.
 
 @login_required(login_url = 'login')
 def index(request):
-    return render(request, "home.html")
+    # return render(request, "home.html")
+    pgList = Pglist.objects.all()
+    print("------->",pgList)
+    return render(request, "home.html", {
+        'pgList' : pgList
+    })
 
 
 def home_view(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
     pgList = Pglist.objects.all()
-    print(Pglist.objects.all())
-    context={
+    context = {
         'pgList': pgList
     }
-    return render(request, "home.html",context)
+    return render(request, "home.html", context)
+
 
 
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        print(username,password)
         user = authenticate(request,username = username, password = password)
-        print(user)
         if user is not None:
             login(request,user)
-            return render(request, "home.html")
+            return HttpResponseRedirect("home")
         else:
             return render(request, "login.html",{
                 "error" : "Invalid Credentials"
@@ -78,7 +81,7 @@ def csignup(request):
                 })
             
             login(request,user)
-            return render (request, 'home_owner.html')
+            return render (request, 'login.html')
 
         else:
             try:
@@ -95,10 +98,30 @@ def csignup(request):
                 })
             
             login(request,user)
-            return render (request, 'home.html')
+            return render (request, 'login.html')
 
     else:
         return render(request, 'csignup.html')
 
         
+@login_required(login_url='login')
+def addPg(request):
+    user = request.user
+    if request.method == "POST" and user.role == "owner":
+        Pname = request.POST["name"]
+        Email = request.POST["email"]
+        Phoneno = request.POST["phoneno"]
+        Address = request.POST["address"]
+        Image = request.FILES["images"]
+        Createdby = user.username
 
+        pg = Pglist.objects.create( name=Pname,email=Email,phoneNumber=Phoneno,address=Address,image=Image,createdby=Createdby )
+        pg.save()
+
+
+
+        return render(request, "home.html" ,{
+            "message": "pg registered successfully"
+        })
+    else:
+        return render(request,"addpg.html")

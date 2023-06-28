@@ -8,7 +8,8 @@ class Pglist(models.Model):
     email = models.EmailField(max_length=100)
     address = models.TextField()
     phoneNumber = models.IntegerField()
-    image = models.ImageField(upload_to='login/pglist_images')
+    image = models.ImageField(upload_to='login/static/pglist_images')
+    createdby = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
