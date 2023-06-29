@@ -16,7 +16,13 @@
 
 
 <body class="bg-gradient-primary">
-    {% if error %} {{ error }} {% endif %}
+    
+    {% if error %}
+        <div class="alert alert-danger "  role="alert" >
+            {{ error }}
+        </div>
+    {% endif %}
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9 mt-5">

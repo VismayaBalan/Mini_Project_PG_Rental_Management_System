@@ -353,7 +353,7 @@
                                             <div>
                                                 <form method="post" action="{% url 'bookpg' pg_id=item.id %}">
                                                     {% csrf_token %}
-                                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Book"><i class="fas fa-donate"></i></button>
+                                                    <button type="submit" class="btn  btn-success mt-3">Book</button>
                                                 </form>
                                             </div>
                                         {% endif %}

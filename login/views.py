@@ -116,25 +116,10 @@ def addPg(request):
         pg = Pglist.objects.create( name=Pname,email=Email,phoneNumber=Phoneno,address=Address,image=Image,createdby=Createdby )
         pg.save()
 
-
-
-        return render(request, "addpg.html" ,{
-            "message": "pg registered successfully"
-        })
+        return HttpResponseRedirect(reverse('home'))
     else:
         return render(request,"addpg.html")
     
-
-# @login_required(login_url='login')
-# def deletePg(request, pg_id):
-#     user = request.user
-#     if request.method == "POST" and user.role == 'owner':
-#         try:
-#             pg = Pglist.objects.get(id=pg_id, createdby=user.username)
-#             pg.delete()
-#             return reverse('home') 
-#         except Pglist.DoesNotExist:
-#             return reverse("home")
 
 @login_required(login_url='login')
 def deletePg(request, pg_id):
