@@ -47,9 +47,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request,"login.html",{
-        "error":"Logged Out..!!"
-    })
+    return render(request,"login.html")
 
 
 def csignup(request):
@@ -120,8 +118,59 @@ def addPg(request):
 
 
 
-        return render(request, "home.html" ,{
+        return render(request, "addpg.html" ,{
             "message": "pg registered successfully"
         })
     else:
         return render(request,"addpg.html")
+    
+
+# @login_required(login_url='login')
+# def deletePg(request, pg_id):
+#     user = request.user
+#     if request.method == "POST" and user.role == 'owner':
+#         try:
+#             pg = Pglist.objects.get(id=pg_id, createdby=user.username)
+#             pg.delete()
+#             return reverse('home') 
+#         except Pglist.DoesNotExist:
+#             return reverse("home")
+
+@login_required(login_url='login')
+def deletePg(request, pg_id):
+    user = request.user
+    
+    if user.role == 'owner':
+        try:
+            pg_id = int(pg_id)
+            pg = Pglist.objects.get(id=pg_id, createdby=user.username)
+            pg.delete()
+            return HttpResponseRedirect(reverse('home')) 
+        except Pglist.DoesNotExist:
+            return HttpResponseRedirect(reverse("home"))
+        
+
+@login_required(login_url='login')
+def myPg(request):
+    user = request.user
+    pgList = Pglist.objects.filter(createdby = user.username)
+    return render(request, "mypg.html", {
+        'pgList' : pgList
+    })
+
+def searchPg(request):
+    query = request.POST["query"]
+    if query:
+        pglist = Pglist.objects.filter(name__icontains=query)  
+    else:
+        pglist = Pglist.objects.none()  
+    
+    context = {
+        'pglist': pglist,
+        'query': query,
+    }
+    print("######",query)
+    print("######",pglist)
+    return render(request, 'searchpg.html', context)
+
+    

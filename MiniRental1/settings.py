@@ -33,6 +33,7 @@ AUTH_USER_MODEL = "login.User"
 # Application definition
 
 INSTALLED_APPS = [
+    'multiselectfield',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
