@@ -20,7 +20,7 @@ def index(request):
 def home_view(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    pgList = Pglist.objects.all()
+    pgList = Pglist.objects.filter(booking_status="Not Booked")
     context = {
         'pgList': pgList
     }
@@ -169,8 +169,56 @@ def searchPg(request):
         'pglist': pglist,
         'query': query,
     }
-    print("######",query)
-    print("######",pglist)
     return render(request, 'searchpg.html', context)
+
+@login_required(login_url='login')
+def bookPg(request, pg_id):
+    user = request.user
+    
+    if user.role == 'customer':
+        try:
+            pg_id = int(pg_id)
+            pg = Pglist.objects.get(id=pg_id)
+            if pg.booking_status != Pglist.BOOKED:  
+                pg.booking_status = Pglist.BOOKED
+                pg.booked_by = user.username
+                pg.save()
+            return HttpResponseRedirect(reverse('home')) 
+        except Pglist.DoesNotExist:
+            return HttpResponseRedirect(reverse("home"))
+        
+@login_required(login_url='login')
+def updateBookPg(request, pg_id):
+    user = request.user
+    
+    if user.role == 'owner':
+        try:
+            pg_id = int(pg_id)
+            pg = Pglist.objects.get(id=pg_id)
+            if pg.booking_status == Pglist.BOOKED:  
+                pg.booking_status = Pglist.NOT_BOOKED
+                pg.booked_by = " "
+                pg.save()
+            return HttpResponseRedirect(reverse('mypg')) 
+        except Pglist.DoesNotExist:
+            return HttpResponseRedirect(reverse("mypg"))
+        
+
+@login_required(login_url='login')
+def customerBookPg(request):
+    user = request.user
+    
+    if user.role == 'customer':
+        pgList = Pglist.objects.filter( booked_by = user.username)
+        context = {
+        'pgList': pgList
+    }
+    return render(request, "customerbookpg.html", context) 
+    
+            
+               
+            
+        
+              
 
     

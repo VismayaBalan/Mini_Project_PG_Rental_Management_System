@@ -60,20 +60,23 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-search"></i>
-                    <span>PG Lists</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom PG Lists:</h6>
-                        <a class="collapse-item" href="#">Saved</a>
-                        <a class="collapse-item" href="#">Liked</a>
+            {% if user.role == 'customer' %}
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-search"></i>
+                        <span>PG Lists</span>
+                    </a>
+                    
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom PG Lists:</h6>
+                            <a  name= "customerbookpg" class="collapse-item" href="{% url 'customerbookpg' %}">Booked</a>
+                        
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            {% endif %}
 
             <!-- Nav Item - Utilities Collapse Menu -->
             {% if user.role == 'owner' %}
@@ -346,6 +349,14 @@
                                             <small>{{item.phoneNumber}}</small>
 
                                         </div>
+                                        {% if user.role == 'customer' %}
+                                            <div>
+                                                <form method="post" action="{% url 'bookpg' pg_id=item.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Book"><i class="fas fa-donate"></i></button>
+                                                </form>
+                                            </div>
+                                        {% endif %}
                                         
                                     </div>
                                     
