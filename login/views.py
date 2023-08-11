@@ -16,6 +16,15 @@ def index(request):
         'pgList' : pgList
     })
 
+def front(request):
+    return render(request, 'front.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
 
 def home_view(request):
     if not request.user.is_authenticated:
@@ -47,7 +56,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request,"login.html")
+    return render(request,"front.html")
 
 
 def csignup(request):
@@ -146,7 +155,7 @@ def myPg(request):
 def searchPg(request):
     query = request.POST["query"]
     if query:
-        pglist = Pglist.objects.filter(name__icontains=query)  
+        pglist = Pglist.objects.filter(address__icontains=query)  
     else:
         pglist = Pglist.objects.none()  
     

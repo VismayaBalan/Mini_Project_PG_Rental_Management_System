@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RENT MY SPACE - About Us</title>
+  <!-- Add your CSS styles here -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url("{% static 'images/hero_bg_2.jpg' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    /* ... Your existing CSS styles ... */
+
+    /* Add styling for the About Us section */
+    .about-section {
+      padding: 100px 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .about-heading {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-size: 3rem; /* Increased font size */
+    color: #fcfbfb !important;
+    margin-bottom: 20px;
+  }
+    
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-text {
+      font-family: cursive;
+      font-size: 1.5rem;
+      color: #fcfbfb;
+      margin-bottom: 40px;
+      line-height: 2;
+    }
+  </style>
+
+  <!-- CSS links -->
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mediaelementplayer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fl-bigmug-line.css' %}">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+  <nav class="navbar navbar-dark background-dark">
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand"><strong>RENT MY SPACE</strong></a>
+      <div class="ml-auto">
+        <a href="{% url 'front' %}" class="text-white mr-3">Home</a>
+        <a href="{% url 'contact' %}" class="text-white mr-3">Contact</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary mr-2">Login</a>
+        <a href="{% url 'csignup' %}" class="btn btn-secondary">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8 text-center" data-aos="fade-up" data-aos-delay="400">
+        <h1 class="mb-4 about-heading">About Us</h1>
+        <div class="about-content">
+            <p class="about-text">Welcome to RENT MY SPACE, your premier destination for finding comfortable and convenient PG accommodations tailored to your needs. Our mission is to simplify the rental process for property owners and tenants alike. With a commitment to transparency, security, and outstanding customer experiences, we're here to redefine the way you search and manage PG rentals. Discover your perfect home away from home with RENT MY SPACE today!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript script links -->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/mediaelement-and-player.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/circleaudioplayer.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

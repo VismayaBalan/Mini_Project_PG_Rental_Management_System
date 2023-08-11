@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RENT MY SPACE</title>
+  <!-- Add your CSS styles here -->
+  <style>
+
+
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url("{% static 'images/hero_bg_1.jpg' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+      
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* Adjust the alpha (last value) to control the opacity */
+      z-index: -1;
+    }
+
+    
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      
+    }
+
+    
+    h1 {
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+  font-size: 75px !important;
+  color: #fcfbfb !important;
+  margin-bottom: 50px;
+}
+
+
+p {
+  font-family: cursive;
+  font-size: 36px;
+  color: #fcfbfb;
+  margin-bottom: 20px;
+}
+
+
+
+    .options {
+      margin: 20px 0;
+      top: 50px;
+      bottom: 50px;
+    }
+
+
+    .logo {
+      max-width: 100px; /* Adjust the image size as needed */
+    }
+
+    /* .navbar {
+      background-color: #66809b;
+    } */
+    
+
+    button {
+      padding: 10px 20px;
+      font-size: 24px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/mediaelementplayer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fl-bigmug-line.css' %}">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Add AOS Library -->
+  <!-- <script src="{% static 'js/aos.js' %}"></script> -->
+  <!-- Initialize AOS -->
+  <!-- <script>
+    AOS.init(); -->
+  </script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark background-dark">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand"><strong>RENT MY SPACE</strong></a>
+        <div class="ml-auto">
+            <a href="{% url 'about' %}" class="text-white mr-3">About</a>
+            <a href="{% url 'contact' %}" class="text-white mr-3">Contact</a>
+            <a href="{% url 'login' %}" class="btn btn-secondary mr-2">Login</a>
+            <a href="{% url 'csignup' %}" class="btn btn-secondary">Sign Up</a>
+        </div>
+    </div>
+</nav>
+
+
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <div class="col-md-8 text-center" data-aos="fade-up" data-aos-delay="400">
+        <h1 class="mb-4">Discover the Perfect Home Away from Home</h1>
+        <p class="mb-5">Find comfortable and convenient PG accommodations for your needs!</p>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+</body>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/mediaelement-and-player.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/circleaudioplayer.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</html>
